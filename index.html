@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelShop</title>
+
+```
+<style>
+
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+
+    body{
+        font-family:'Segoe UI', sans-serif;
+        background:#f5f7fa;
+        color:#333;
+    }
+
+    html{
+        scroll-behavior:smooth;
+    }
+
+    /* HEADER */
+
+    header{
+        width:100%;
+        background:white;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        padding:2% 5%;
+        box-shadow:0 0.2rem 1rem rgba(0,0,0,0.1);
+        position:sticky;
+        top:0;
+    }
+
+    header h1{
+        color:#0077ff;
+    }
+
+    nav ul{
+        display:flex;
+        list-style:none;
+        gap:15%;
+    }
+
+    nav a{
+        text-decoration:none;
+        color:#333;
+        font-weight:bold;
+    }
+
+    nav a:hover{
+        color:#0077ff;
+    }
+
+    /* HERO */
+
+    #inicio{
+        height:85vh;
+
+        background:
+        linear-gradient(
+        rgba(0,0,0,0.4),
+        rgba(0,0,0,0.4)),
+        url("img/playa.jpg");
+
+        background-size:cover;
+        background-position:center;
+
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+
+        color:white;
+        text-align:center;
+    }
+
+    #inicio h2{
+        font-size:3rem;
+        width:80%;
+    }
+
+    #inicio p{
+        margin-top:2%;
+        font-size:1.2rem;
+        width:70%;
+    }
+
+    .boton-principal{
+        margin-top:3%;
+        padding:1% 3%;
+        border:none;
+        border-radius:2rem;
+        background:#0077ff;
+        color:white;
+        cursor:pointer;
+        font-size:1rem;
+    }
+
+    /* TITULOS */
+
+    .titulo{
+        text-align:center;
+        margin-top:5%;
+        margin-bottom:3%;
+        color:#003566;
+    }
+
+    /* PRODUCTOS */
+
+    #productos{
+        width:90%;
+        margin:auto;
+
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:3%;
+    }
+
+    .card{
+
+        width:30%;
+
+        background:white;
+        border-radius:3%;
+
+        overflow:hidden;
+
+        box-shadow:0 0.3rem 1rem rgba(0,0,0,0.1);
+
+        margin-bottom:3%;
+    }
+
+    .card:hover{
+        transform:translateY(-1%);
+    }
+
+    .card img{
+        width:100%;
+        display:block;
+    }
+
+    .card h3{
+        padding:4%;
+    }
+
+    .card p{
+        padding:0 4%;
+    }
+
+    .precio{
+        color:#0077ff;
+        font-weight:bold;
+        margin-top:2%;
+    }
+
+    .card button{
+        width:90%;
+        margin:5%;
+        padding:3%;
+        border:none;
+        border-radius:1rem;
+        background:#0077ff;
+        color:white;
+        cursor:pointer;
+    }
+
+    /* SERVICIOS */
+
+    #servicios{
+        width:90%;
+        margin:auto;
+
+        display:flex;
+        justify-content:center;
+        flex-wrap:wrap;
+        gap:3%;
+    }
+
+    .servicio{
+
+        width:25%;
+
+        background:white;
+
+        text-align:center;
+
+        padding:3%;
+
+        border-radius:3%;
+
+        box-shadow:0 0.3rem 1rem rgba(0,0,0,0.1);
+    }
+
+    /* CARRITO */
+
+    #carrito{
+        width:90%;
+        margin:5% auto;
+    }
+
+    table{
+        width:100%;
+        border-collapse:collapse;
+        background:white;
+    }
+
+    th{
+        background:#0077ff;
+        color:white;
+    }
+
+    th,td{
+        padding:2%;
+        text-align:center;
+        border:1px solid #ddd;
+    }
+
+    /* LOGIN */
+
+    #login{
+
+        width:60%;
+
+        margin:5% auto;
+
+        background:white;
+
+        padding:4%;
+
+        border-radius:3%;
+
+        box-shadow:0 0.3rem 1rem rgba(0,0,0,0.1);
+    }
+
+    input{
+
+        width:100%;
+
+        padding:2%;
+
+        margin-top:1%;
+
+        margin-bottom:3%;
+    }
+
+    /* CONTACTO */
+
+    #contacto{
+
+        width:90%;
+
+        margin:5% auto;
+
+        background:white;
+
+        padding:4%;
+
+        text-align:center;
+
+        border-radius:3%;
+    }
+
+    /* FOOTER */
+
+    footer{
+
+        background:#003566;
+
+        color:white;
+
+        text-align:center;
+
+        padding:3%;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+        header{
+            flex-direction:column;
+            gap:1rem;
+        }
+
+        nav ul{
+            flex-direction:column;
+            text-align:center;
+            gap:1rem;
+        }
+
+        #inicio h2{
+            font-size:2rem;
+        }
+
+        #inicio p{
+            width:90%;
+        }
+
+        .card{
+            width:90%;
+        }
+
+        .servicio{
+            width:90%;
+        }
+
+        #login{
+            width:90%;
+        }
+
+        table{
+            display:block;
+            overflow-x:auto;
+        }
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+<header>
+
+```
+<h1>TravelShop</h1>
+
+<nav>
+    <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#productos">Destinos</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#carrito">Carrito</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+    </ul>
+</nav>
+```
+
+</header>
+
+<section id="inicio">
+
+```
+<h2>Tu próxima aventura comienza hoy</h2>
+
+<p>
+    Descubrí destinos nacionales e internacionales con los mejores precios.
+</p>
+
+<button class="boton-principal">
+    Ver ofertas
+</button>
+```
+
+</section>
+
+<h2 class="titulo">Destinos Destacados</h2>
+
+<section id="productos">
+
+```
+<article class="card">
+
+    <img src="img/bariloche.jpg" alt="Bariloche">
+
+    <h3>Bariloche Premium</h3>
+
+    <p>7 noches con hotel y excursiones.</p>
+
+    <p class="precio">$850.000</p>
+
+    <button
+    class="agregar-carrito"
+    data-nombre="Bariloche Premium"
+    data-precio="850000">
+    Agregar al carrito
+    </button>
+
+</article>
+
+<article class="card">
+
+    <img src="img/rio.jpg" alt="Rio">
+
+    <h3>Rio de Janeiro</h3>
+
+    <p>5 noches con vuelo incluido.</p>
+
+    <p class="precio">$1.200.000</p>
+
+    <button
+    class="agregar-carrito"
+    data-nombre="Rio de Janeiro"
+    data-precio="1200000">
+    Agregar al carrito
+    </button>
+
+</article>
+
+<article class="card">
+
+    <img src="img/miami.jpg" alt="Miami">
+
+    <h3>Miami Experience</h3>
+
+    <p>10 noches con alojamiento.</p>
+
+    <p class="precio">$2.500.000</p>
+
+    <button
+    class="agregar-carrito"
+    data-nombre="miami"
+    data-precio="2500000">
+    Agregar al carrito
+    </button>
+
+</article>
+```
+
+</section>
+
+<h2 class="titulo">Nuestros Servicios</h2>
+
+<section id="servicios">
+
+```
+<div class="servicio">
+    <h3>✈️ Vuelos</h3>
+    <p>Pasajes nacionales e internacionales.</p>
+</div>
+
+<div class="servicio">
+    <h3>🏨 Hoteles</h3>
+    <p>Reservas en todo el mundo.</p>
+</div>
+
+<div class="servicio">
+    <h3>🚗 Autos</h3>
+    <p>Alquiler de vehículos.</p>
+</div>
+```
+
+</section>
+
+<h2 class="titulo">Carrito de Compras</h2>
+
+<section id="carrito">
+
+```
+<table>
+    <tbody id="tablaCarrito"></tbody>
+</table>
+
+<button id="vaciarCarrito">
+    Vaciar carrito
+</button>
+
+<form id="formRegistro">
+
+    <label>Usuario</label>
+    <input type="text" id="usuario">
+
+    <label>Contraseña</label>
+    <input type="password" id="password">
+
+    <button type="submit">
+        Registrarse
+    </button>
+
+</form>
+
+</section>
+
+<h2 class="titulo">Ingresar</h2>
+
+<section id="login">
+
+```
+<label>Usuario</label>
+<input type="text">
+
+<label>Contraseña</label>
+<input type="password">
+
+<button class="boton-principal">
+    Ingresar
+</button>
+```
+
+</section>
+
+<h2 class="titulo">Contacto</h2>
+
+<section id="contacto">
+
+```
+<p>📧 contacto@travelshop.com</p>
+<br>
+
+<p>📞 +54 11 1234-5678</p>
+<br>
+
+<p>📍 Buenos Aires, Argentina</p>
+```
+
+</section>
+
+<footer>
+
+```
+<p>© 2025 TravelShop - Todos los derechos reservados</p>
+```
+
+</footer>
+<script src="modulos.js"></script>
+<script src="eventos.js"></script>
+</body>
+</html>
