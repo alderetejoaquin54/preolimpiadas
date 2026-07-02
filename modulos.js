@@ -1,112 +1,79 @@
-function obtenerCarrito(){
-
-```
-return JSON.parse(
-    localStorage.getItem("carrito")
-) || [];
-```
-
+function obtenerCarrito() {
+    return JSON.parse(localStorage.getItem("carrito")) || [];
 }
 
-function guardarCarrito(carrito){
-
-```
-localStorage.setItem(
-    "carrito",
-    JSON.stringify(carrito)
-);
-```
-
+function guardarCarrito(carrito) {
+    localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
-function agregarProducto(nombre,precio){
+function agregarProducto(nombre, precio) {
+    const carrito = obtenerCarrito();
 
-```
-const carrito = obtenerCarrito();
+    carrito.push({
+        nombre: nombre,
+        precio: precio
+    });
 
-carrito.push({
-    nombre:nombre,
-    precio:precio
-});
-
-guardarCarrito(carrito);
-```
-
+    guardarCarrito(carrito);
 }
 
-function eliminarProducto(indice){
+function eliminarProducto(indice) {
+    const carrito = obtenerCarrito();
 
-```
-const carrito = obtenerCarrito();
+    carrito.splice(indice, 1);
 
-carrito.splice(indice,1);
-
-guardarCarrito(carrito);
-```
-
+    guardarCarrito(carrito);
 }
 
-function vaciarCarrito(){
-
-```
-localStorage.removeItem("carrito");
-```
-
+function vaciarCarrito() {
+    localStorage.removeItem("carrito");
 }
 
-function registrarUsuario(usuario,password){
+function registrarUsuario(usuario, password) {
+    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-```
-const usuarios = JSON.parse(
-    localStorage.getItem("usuarios")
-) || [];
+    usuarios.push({
+        usuario,
+        password
+    });
 
-usuarios.push({
-    usuario:usuario,
-    password:password
-});
-
-localStorage.setItem(
-    "usuarios",
-    JSON.stringify(usuarios)
-);
-```
-
+    localStorage.setItem(
+        "usuarios",
+        JSON.stringify(usuarios)
+    );
 }
 
-function mostrarCarrito(){
+function mostrarCarrito() {
 
-```
-const tabla =
-document.getElementById("tablaCarrito");
+    const tabla = document.getElementById("tablaCarrito");
+    const totalTexto = document.getElementById("totalCarrito");
 
-if(!tabla) return;
+    if (!tabla) return;
 
-tabla.innerHTML = "";
+    tabla.innerHTML = "";
 
-const carrito = obtenerCarrito();
+    let total = 0;
 
-carrito.forEach((producto,indice)=>{
+    const carrito = obtenerCarrito();
 
-    tabla.innerHTML += `
-    <tr>
+    carrito.forEach((producto, indice) => {
 
-        <td>${producto.nombre}</td>
+        total += producto.precio;
 
-        <td>$${producto.precio}</td>
+        tabla.innerHTML += `
+        <tr>
+            <td>${producto.nombre}</td>
+            <td>$${producto.precio.toLocaleString()}</td>
+            <td>
+                <button class="eliminar" data-indice="${indice}">
+                    Eliminar
+                </button>
+            </td>
+        </tr>
+        `;
+    });
 
-        <td>
-            <button
-            class="eliminar"
-            data-indice="${indice}">
-            X
-            </button>
-        </td>
-
-    </tr>
-    `;
-
-});
-```
-
+    if (totalTexto) {
+        totalTexto.textContent = "Total: $" + total.toLocaleString();
+    }
 }

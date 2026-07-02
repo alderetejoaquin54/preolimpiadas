@@ -69,11 +69,11 @@
         linear-gradient(
         rgba(0,0,0,0.4),
         rgba(0,0,0,0.4)),
-        url("img/playa.jpg");
+        url("img/playita.png");
 
         background-size:cover;
         background-position:center;
-
+        background-repeat: no-repeat;
         display:flex;
         flex-direction:column;
         justify-content:center;
@@ -88,6 +88,23 @@
         width:80%;
     }
 
+    .logo{
+        display: flex;
+        align-items: start;
+        gap: 5%;
+    }
+    #logo1{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 7.4%;
+    }
+
+    .logo1 img{
+        width: 75%;
+            max-width: 12rem;
+            min-width: 8rem
+    }
     #inicio p{
         margin-top:2%;
         font-size:1.2rem;
@@ -334,7 +351,10 @@
 <header>
 
 ```
-<h1>TravelShop</h1>
+<div class="logo">
+   <img id="logo1"  src="img/travelshopLogo.png" alt="">
+    <h1>TravelShop</h1>
+</div>
 
 <nav>
     <ul>
@@ -420,7 +440,7 @@
 
     <button
     class="agregar-carrito"
-    data-nombre="miami"
+    data-nombre="Miami Experience"
     data-precio="2500000">
     Agregar al carrito
     </button>
@@ -457,28 +477,22 @@
 
 <section id="carrito">
 
-```
-<table>
-    <tbody id="tablaCarrito"></tbody>
-</table>
+    <h2 class="titulo">Carrito de compras</h2>
 
+    <table>
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody id ="tablaCarrito">
+    </table>
+    <br>
 <button id="vaciarCarrito">
     Vaciar carrito
 </button>
-
-<form id="formRegistro">
-
-    <label>Usuario</label>
-    <input type="text" id="usuario">
-
-    <label>Contraseña</label>
-    <input type="password" id="password">
-
-    <button type="submit">
-        Registrarse
-    </button>
-
-</form>
 
 </section>
 
